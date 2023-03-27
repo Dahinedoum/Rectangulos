@@ -1,7 +1,5 @@
 // // Con esta base , quiero que en  lugar de pelotas sean rectangulos.  ctx.fillRect(x, y, width, height) Investiga el metodo en la documentacion
-
 // // Tened en cuenta que el punto de origen del rectangulo no es el centro como en los circulos es la esquina superior izquierda. 
-
 // // Generar los rectangulos con velocidades aleatorias
 // // Generar los rectangulos con colores aleatorios
 // // Generar los rectangulos con anchos y alturas aleatorias dentro de unos limites que definais 
@@ -11,8 +9,8 @@ const canvas = document.querySelector('canvas');
 
 const ctx = canvas.getContext('2d');
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 console.log(canvas);
 
@@ -54,12 +52,12 @@ class rect {
   function handleAddRect(event) {
 	const width = Math.random() * 90 //random width 
 	const height = Math.random() * 90 //random height
-	const color = `rgb(${Math.random() * 256}, ${Math.random() * 256}, ${Math.random() * 256})`; // random color
+	const color = `rgba(${Math.random() * 256}, ${Math.random() * 256}, ${Math.random() * 256}, ${Math.random() * 256})`; // random color
 	rects.push(new rect(event.clientX, event.clientY, width, height, color));
 	console.log(rects); 
   }
   
-  window.addEventListener('click', handleAddRect);
+  window.addEventListener('click', handleAddRect);//window. crea el evento en general, se podria seleccionar a un elemento en especial 
 
   setInterval(function () {
   		ctx.clearRect(0, 0, innerWidth, innerHeight); 
